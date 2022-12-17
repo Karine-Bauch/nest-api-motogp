@@ -1,22 +1,7 @@
-import {
-  Controller,
-  Get,
-  Post,
-  Put,
-  // Patch,
-  Delete,
-  Param,
-  Body,
-  Res,
-  HttpStatus,
-} from '@nestjs/common';
+import { Controller, Get, Param } from '@nestjs/common';
 
-import { Response } from 'express';
-
-import { CreateRiderDto } from './dto/create-rider.dto';
-import { UpdateRiderDto } from './dto/update-rider.dto';
-import { RidersService } from './riders.service';
-import { Rider } from './interfaces/rider.interface';
+import { RidersService } from '../service/riders.service';
+import { Rider } from '../entity/rider.entity';
 
 @Controller('riders')
 export class RidersController {
@@ -33,9 +18,9 @@ export class RidersController {
   //   return 'This returns all the riders';
   // }
 
-  @Get(':id')
-  async findOne(@Param('id') id: string): Promise<Rider> {
-    return this.ridersService.findOne(parseInt(id));
+  @Get(':number')
+  async findOne(@Param('number') number: string): Promise<Rider> {
+    return this.ridersService.findOneByNumber(number);
   }
 
   // @Post()
