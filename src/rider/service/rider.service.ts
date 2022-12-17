@@ -14,11 +14,11 @@ export class RidersService {
   //   this.riders.push(rider);
   // }
 
-  findAll(): Promise<Rider[]> {
+  findRiders(): Promise<Rider[]> {
     return this.ridersRepository.find();
   }
 
-  findOneByNumber(number: string): Promise<Rider> {
+  findRiderByNumber(number: string): Promise<Rider> {
     return this.ridersRepository.findOneBy({ number });
   }
 

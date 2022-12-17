@@ -1,9 +1,7 @@
 import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
-import { RidersModule } from './riders/riders.module';
+import { RidersModule } from './rider/rider.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { Rider } from './riders/entity/rider.entity';
+import { Rider } from './rider/entity/rider.entity';
 
 import * as dotenv from 'dotenv';
 dotenv.config();
@@ -22,7 +20,5 @@ dotenv.config();
       synchronize: false,
     }),
   ],
-  controllers: [AppController],
-  providers: [AppService],
 })
 export class AppModule {}

@@ -1,6 +1,14 @@
-import { Controller, Get, Param } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Put,
+  Delete,
+  Body,
+  Param,
+} from '@nestjs/common';
 
-import { RidersService } from '../service/riders.service';
+import { RidersService } from '../service/rider.service';
 import { Rider } from '../entity/rider.entity';
 
 @Controller('riders')
@@ -9,18 +17,12 @@ export class RidersController {
 
   @Get()
   async findAll(): Promise<Rider[]> {
-    return this.ridersService.findAll();
+    return this.ridersService.findRiders();
   }
-
-  // @Get()
-  // findAll(@Res({ passthrough: true }) res: Response) {
-  //   res.status(HttpStatus.OK);
-  //   return 'This returns all the riders';
-  // }
 
   @Get(':number')
   async findOne(@Param('number') number: string): Promise<Rider> {
-    return this.ridersService.findOneByNumber(number);
+    return this.ridersService.findRiderByNumber(number);
   }
 
   // @Post()
