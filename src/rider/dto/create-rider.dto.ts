@@ -1,5 +1,4 @@
 export class CreateRiderDto {
-  id: number;
   number: string;
   firstname: string;
   lastname: string;
@@ -8,6 +7,4 @@ export class CreateRiderDto {
   height: number;
   weight: number;
   biography: string;
-  created_at?: Date;
-  updated_at?: Date;
 }

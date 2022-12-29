@@ -2,6 +2,7 @@ import { Module } from '@nestjs/common';
 import { RidersModule } from './rider/rider.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Rider } from './rider/entity/rider.entity';
+import { AuthModule } from './auth/auth.module';
 
 import * as dotenv from 'dotenv';
 dotenv.config();
@@ -19,6 +20,8 @@ dotenv.config();
       entities: [Rider],
       synchronize: false,
     }),
+    AuthModule,
   ],
+  controllers: [],
 })
 export class AppModule {}

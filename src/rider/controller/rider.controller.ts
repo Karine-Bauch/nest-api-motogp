@@ -8,35 +8,39 @@ import {
   Param,
 } from '@nestjs/common';
 
-import { RidersService } from '../service/rider.service';
+import { RidersService as RiderService } from '../service/rider.service';
 import { Rider } from '../entity/rider.entity';
+import { CreateRiderDto } from '../dto';
 
 @Controller('riders')
 export class RidersController {
-  constructor(private ridersService: RidersService) {}
+  constructor(private riderService: RiderService) {}
 
   @Get()
   async findAll(): Promise<Rider[]> {
-    return this.ridersService.findRiders();
+    return this.riderService.findRiders();
   }
 
   @Get(':number')
   async findOne(@Param('number') number: string): Promise<Rider> {
-    return this.ridersService.findRiderByNumber(number);
+    return this.riderService.findRiderByNumber(number);
   }
 
-  // @Post()
-  // async create(@Body() createRiderDto: CreateRiderDto): Promise<string> {
-  //   return 'This action adds a new rider';
-  // }
+  @Post('post')
+  async create(@Body() createRiderDto: CreateRiderDto) {
+    console.log({
+      createRiderDto,
+    });
+    return this.riderService.createRider(createRiderDto);
+  }
 
   // @Put(':id')
   // update(@Param('id') id: string, @Body() updateRiderDto: UpdateRiderDto) {
   //   return `This action updates the informaitons about #${id} rider`;
   // }
 
-  // @Delete()
-  // delete(@Param('id') id: string) {
-  //   return `This action deletes #${id} rider`;
-  // }
+  @Delete(':id')
+  delete(@Param('id') id: number) {
+    return this.riderService.deleteRider(id);
+  }
 }

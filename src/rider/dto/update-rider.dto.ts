@@ -8,6 +8,4 @@ export class UpdateRiderDto {
   height?: number;
   weight?: number;
   biography?: string;
-  created_at?: Date;
-  updated_at?: Date;
 }
